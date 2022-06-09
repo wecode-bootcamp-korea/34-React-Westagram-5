@@ -1,0 +1,259 @@
+.main {
+  height: 95vh;
+  background-color: #fafafa;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+
+  /* nav */
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    border-bottom: 1px solid #cdcdcd;
+    height: 50px;
+    width: 100vw;
+
+    .navElement {
+      display: flex;
+      align-items: center;
+    }
+    #instaId {
+      border-left: 1px solid black;
+      padding-left: 12px;
+    }
+    .imagess {
+      width: 20px;
+      height: auto;
+      margin-right: 8px;
+    }
+    .mainTitle {
+      font-family: 'Lobster', cursive;
+      font-size: 22px;
+      margin-left: 10px;
+    }
+    .search {
+      width: 15px;
+      height: 15px;
+      margin-bottom: 2px;
+      display: block;
+      position: relative;
+      left: 110px;
+      color: #cdcdcd;
+    }
+    .inputbox {
+      width: 250px;
+      height: 25px;
+      text-align: center;
+      background-color: #eeeeee;
+      border: 1px solid #cdcdcd;
+      border-radius: 4px;
+    }
+    .inputbox::placeholder {
+      color: #cdcdcd;
+    }
+  }
+
+  /* main */
+  .feeds {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+
+    article {
+      width: 500px;
+      margin-right: 10px;
+      border: 1px solid #cdcdcd;
+      background-color: white;
+
+      .feedBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .textLine {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .buttonLine {
+        box-sizing: border-box;
+        padding: 5px;
+
+        .buttons {
+          margin: 0 2px 0 2px;
+          padding: 3px;
+        }
+      }
+
+      .heartLine {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .contentLine {
+        box-sizing: border-box;
+        font-size: 13px;
+        float: left;
+        padding: 9px;
+        font-weight: medium;
+
+        .id {
+          font-size: 14px;
+          font-weight: bold;
+          margin-right: 5px;
+        }
+
+        .time {
+          display: block;
+          color: gray;
+        }
+      }
+      .commentSection {
+        margin: 5px 1px 5px 1px;
+      }
+
+      .comment {
+        height: 100%;
+        box-sizing: border-box;
+        width: 90%;
+        padding: 10px;
+        padding-left: 15px;
+        border: none;
+      }
+      .comment:focus {
+        outline: none;
+      }
+      .submit {
+        background-color: transparent;
+        margin: 0;
+        box-sizing: border-box;
+        width: 10%;
+        height: 100%;
+        border: none;
+        color: #bfe0fd;
+      }
+    }
+
+    /* main-right */
+    .boxLine {
+      box-sizing: border-box;
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .myProfile {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    font-size: 12px;
+  }
+  .feedImage {
+    width: 500px;
+  }
+  .likeProfile {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  .profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+    padding: 5px;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+  }
+
+  .text:nth-child(1) {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .text:nth-child(2) {
+    color: #b0b0b0;
+    font-size: 12px;
+  }
+  .type1 {
+    color: gray;
+  }
+  .type2 {
+    font-weight: bold;
+    color: #5696f6;
+  }
+  .type3 {
+    text-decoration: none;
+    font-size: 14px;
+    color: #cbcbcb;
+  }
+  .type4 {
+    float: right;
+  }
+
+  .myText {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+  }
+  .myText:nth-child(2) {
+    color: #b0b0b0;
+    font-size: 14px;
+  }
+  div .seeAll span.text {
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    padding-left: 8px;
+    padding-top: 8px;
+    background-color: white;
+    border: 1px solid #cdcdcd;
+  }
+  .followBox {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding-right: 10px;
+    align-items: center;
+  }
+  .addLine {
+    box-sizing: border-box;
+    padding: 3px 10px 3px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .addBox {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 15px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+}
