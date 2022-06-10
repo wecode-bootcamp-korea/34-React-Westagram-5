@@ -13,6 +13,11 @@ function Login() {
   const rightPw = '111111';
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  const [color, setColor] = useState('skyblue');
+
+  const btnColorChange = () => {
+    (id.length > 1) & (pw.length > 1) ? setColor('blue') : setColor('skyblue');
+  };
 
   const rightIdPw = () => {
     if (id == rightId && pw == rightPw) {
@@ -48,7 +53,11 @@ function Login() {
       <div className="content">
         <div id="text">westagram</div>
         <div className="westaBox">
-          <form onSubmit={consoleId} className="loginBox">
+          <form
+            onKeyUp={btnColorChange}
+            onSubmit={consoleId}
+            className="loginBox"
+          >
             <input
               name="id"
               value={id}
@@ -65,7 +74,7 @@ function Login() {
               type="password"
               placeholder="비밀번호"
             />
-            <button>로그인</button>
+            <button style={{ backgroundColor: color }}>로그인</button>
           </form>
           <a id="forget" href="">
             비밀번호를 잊으셨나요?
