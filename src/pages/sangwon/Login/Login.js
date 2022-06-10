@@ -7,7 +7,6 @@ export default function Login() {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
   const [btn, setBtn] = useState(true);
-  const realInfo = ['305243@naver.com', '12345'];
 
   // const goToMain = () => {
   //   if (inputId === realInfo[0] && inputPw === realInfo[1]) {
