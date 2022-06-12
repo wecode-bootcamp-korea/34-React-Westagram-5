@@ -100,7 +100,7 @@ export default function Main() {
             <span className="id">hasang0.0</span>
             <span>
               냉면 돈까스 삼겹살 참치김밥 버거킹 회전초밥 불닭볶음면 막창 대창
-              양꼬치 김치볶음밥 잡채밥 탕수육 짜장면...{' '}
+              양꼬치 김치볶음밥 잡채밥 탕수육 짜장...{' '}
               <a href="#" className="type3">
                 더 보기
               </a>
