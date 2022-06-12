@@ -21,12 +21,12 @@ export default function Login() {
     navigate('/main-sangwon');
   };
 
-  const handleIdInput = event => {
-    setInputId(event.target.value);
+  const handleIdInput = e => {
+    setInputId(e.target.value);
   };
 
-  const handlePwInput = event => {
-    setInputPw(event.target.value);
+  const handlePwInput = e => {
+    setInputPw(e.target.value);
   };
 
   const active = () => {

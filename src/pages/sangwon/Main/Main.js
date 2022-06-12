@@ -1,33 +1,26 @@
 import { React, useState } from 'react';
 import './Main.scss';
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {
-//   faHeart,
-//   faComment,
-//   faPaperPlane,
-//   faBookmark,
-// } from '@fortawesome/free-regular-svg-icons';
-// import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Comment from '../components/Comment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faHeart,
+  faComment,
+  faPaperPlane,
+  faBookmark,
+} from '@fortawesome/free-regular-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export default function Main() {
-  // const commentEnter = (e) => {
-  //   if (e.key === "Enter" || e.key === "NumpadEnter") {
-  //   }
-  // };
-  const [commentList, setCommentList] = useState('');
-  const [dat, setDat] = useState('');
+  const [commentValue, setCommentValue] = useState('');
+  const [commentBox, setCommentBox] = useState([]);
 
-  const createComment = e => {
+  const onChange = e => setCommentValue(e.target.value);
+
+  const onSubmit = e => {
     e.preventDefault();
-    const repl = e.target.repl.value;
-    setDat(e.target.repl.value);
-    console.log(dat);
+    commentBox.push(commentValue);
+    setCommentValue('');
   };
-
-  // const cm = () => {
-  //   return <div>{repl}</div>;
-  // };
 
   return (
     <div className="main">
@@ -43,7 +36,7 @@ export default function Main() {
           </span>
         </div>
         <div className="navElement">
-          {/* <FontAwesomeIcon className="search" icon={faMagnifyingGlass} /> */}
+          <FontAwesomeIcon className="search" icon={faMagnifyingGlass} />
           <input className="inputbox" type="text" placeholder="검색" />
         </div>
         <div className="navElement">
@@ -81,18 +74,16 @@ export default function Main() {
           </div>
           <img src="images/sangwon/food.jpg" className="feedImage" alt="feed" />
           <div className="buttonLine">
-            {/* <FontAwesomeIcon className="buttons" icon={faHeart} size="2x" />
-            <FontAwesomeIcon className="buttons" icon={faComment} size="2x" />
-            <FontAwesomeIcon
-              className="buttons"
-              icon={faPaperPlane}
-              size="2x"
-            />
-            <FontAwesomeIcon
-              className="buttons type4"
-              icon={faBookmark}
-              size="2x"
-            /> */}
+            <div className="leftButton">
+              <FontAwesomeIcon className="buttons" icon={faHeart} size="xl" />
+              <FontAwesomeIcon className="buttons" icon={faComment} size="xl" />
+              <FontAwesomeIcon
+                className="buttons"
+                icon={faPaperPlane}
+                size="xl"
+              />
+            </div>
+            <FontAwesomeIcon className="buttons" icon={faBookmark} size="xl" />
           </div>
           <div className="heartLine">
             <span></span>
@@ -114,15 +105,25 @@ export default function Main() {
                 더 보기
               </a>
             </span>
-            <div className="commentSection">{commentList}</div>
+            <div className="commentSection">
+              {commentBox.map((el, idx) => (
+                <div key={idx}>
+                  <Comment el={el} />
+                </div>
+              ))}
+            </div>
             <span className="time">42분 전</span>
           </div>
-          <form className="commentLine" onSubmit={createComment}>
+
+          {/* !!!!!!!!!!!!!!!!!!댓글창 */}
+          <form className="commentLine" onSubmit={onSubmit}>
             <input
               type="text"
               name="repl"
               placeholder="댓글 달기..."
               className="comment"
+              value={commentValue}
+              onChange={onChange}
             />
             <input type="submit" value="게시" className="submit" />
           </form>
