@@ -1,5 +1,54 @@
+import { Component, useState } from 'react';
 import './Main.scss';
+
+const CommentList = props => {
+  const [likeImg, setLikeImg] = useState('images/hyunjoon/commentlike.png');
+  const [count, setCount] = useState(true);
+
+  function redLikeBtn() {
+    console.log(count);
+    if (count) {
+      setLikeImg('images/hyunjoon/commentlikethis.png');
+      setCount(false);
+    }
+    if (!count) {
+      setLikeImg('images/hyunjoon/commentlike.png');
+      setCount(true);
+    }
+  }
+
+  function deleteBtn() {}
+
+  return (
+    <>
+      <p>
+        <strong>{props.userName + ' '}</strong>
+        {props.userComment}
+        <img onClick={redLikeBtn} className="commentLike" src={likeImg} />
+        <button className="deleteBtn">X</button>
+      </p>
+    </>
+  );
+};
+// ("<img alt='CommentLIke' src='img/commentlike.png' class='commentLike'>");
 function Main() {
+  const [username] = useState('JHJ');
+  const [comment, setComment] = useState('');
+
+  const commentPush = e => {
+    setComment(e.target.value);
+  };
+  const [commentBox, setCommentBox] = useState([]);
+
+  const onSubmit = event => {
+    event.preventDefault();
+    if (comment === '') {
+      return;
+    }
+    setCommentBox([...commentBox, comment]);
+    setComment('');
+    console.log(comment);
+  };
   return (
     <div className="main">
       <nav>
@@ -83,22 +132,46 @@ function Main() {
                 </div>
               </div>
               <p className="howManyLike">
-                <img alt="FriendImg" src="images/hyunjoon/recommand2.jpg" />
+                <img
+                  className="userImg"
+                  alt="FriendImg"
+                  src="images/hyunjoon/recommand2.jpg"
+                />
                 <strong>friend1</strong>님 <strong>외 10명</strong>이
                 좋아합니다.
               </p>
-              <div id="commentBox">
+              <div className="commentBox">
                 <p>
                   <strong>username</strong> JMT
                 </p>
               </div>
+              <div className="commentBox">
+                <p>
+                  <strong>username</strong>
+                </p>
+              </div>
+              <div className="commentBox">
+                {commentBox.map((commentArr, i) => {
+                  return (
+                    <CommentList
+                      userName={username}
+                      userComment={commentArr}
+                      key={i}
+                    />
+                  );
+                })}
+              </div>
               <div className="commentInputBox">
                 <input
+                  onChange={commentPush}
                   className="commentInput"
                   type="text"
                   placeholder="댓글 달기.."
+                  value={comment}
                 />
-                <button className="postingButton">게시</button>
+                <button onClick={onSubmit} className="postingButton">
+                  게시
+                </button>
               </div>
             </div>
           </div>
