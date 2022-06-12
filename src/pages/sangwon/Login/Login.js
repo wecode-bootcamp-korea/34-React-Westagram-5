@@ -8,14 +8,6 @@ export default function Login() {
   const [inputPw, setInputPw] = useState('');
   const [btn, setBtn] = useState(true);
 
-  // const goToMain = () => {
-  //   if (inputId === realInfo[0] && inputPw === realInfo[1]) {
-  //     navigate("/main");
-  //   } else {
-  //     alert("아이디/비밀번호를 확인해주세요");
-  //   }
-  // };
-
   const goToMain = () => {
     console.log('ID : ', inputId, ' / PW : ', inputPw);
     navigate('/main-sangwon');
@@ -37,7 +29,9 @@ export default function Login() {
 
   const loginEnter = e => {
     if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-      goToMain();
+      if (handleIdInput == true && handlePwInput > 4) {
+        goToMain();
+      }
     }
   };
 
