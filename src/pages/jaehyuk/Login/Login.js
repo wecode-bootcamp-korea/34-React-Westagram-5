@@ -18,12 +18,12 @@ function Login() {
 
   const [id, setId] = useState('');
   const handleIdInput = event => {
-    console.log('id.value: ', id);
+    // console.log('id.value: ', id);
     setId(event.target.value);
   };
   const [pw, setPw] = useState('');
   const handlePwInput = event => {
-    console.log('pw.value: ', pw);
+    // console.log('pw.value: ', pw);
     setPw(event.target.value);
   };
 

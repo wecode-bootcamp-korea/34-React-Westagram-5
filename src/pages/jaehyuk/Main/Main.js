@@ -1,8 +1,48 @@
 import './Main.scss';
 import '../../../styles/common.scss';
-import React from 'react';
+// import Comments from './Comment';
+import React, { useState } from 'react';
+// import { eventWrapper } from '@testing-library/user-event/dist/utils';
+// import { createPortal } from 'react-dom';
+const CommentInfo = props => {
+  return (
+    <li className="commentsLi">
+      <span>
+        <span className="pointSpan userID">{props.userName}</span>
+        <span>{props.userComment}</span>
+      </span>
+      <button>x</button>
+    </li>
+  );
+};
 
 function Main() {
+  const [userName] = useState('_hyyyyyk');
+  const [comment, setComment] = useState('');
+  const [commentArray, setCommentArray] = useState([]);
+  // const [key, setKey] = useState(0);
+  const commentValue = event => {
+    setComment(event.target.value);
+    // console.log(comment);
+    // console.log(event);
+  };
+  // const onKeyPress = e => {
+  //   if (e.key === 'enter') {
+  //     writeComments();
+  //   }
+  // };
+
+  const writeComments = event => {
+    event.preventDefault();
+    if (comment === '') {
+      return;
+    }
+    setCommentArray([...commentArray, comment]);
+    // console.log(setCommentArray
+    setComment('');
+    // console.log(comment);
+  };
+
   return (
     <>
       <nav className="navigation">
@@ -98,8 +138,8 @@ function Main() {
                 />
                 <p>
                   <span className="pointSpan">_hyyyyyk</span>님{' '}
-                  <span className="pointSpan" />외 <span id="likeNumber" />이
-                  좋아합니다
+                  <span className="pointSpan" />
+                  외 258,157,153 명 <span id="likeNumber" />이 좋아합니다
                 </p>
               </div>
               <div className="description">
@@ -110,7 +150,7 @@ function Main() {
               </div>
               <div className="commentSection">
                 <ul className="comments">
-                  <li className="commentsLi">
+                  {/* <li className="commentsLi">
                     <span>
                       <span className="pointSpan userID">vogue_official</span>
                       화보 잘 나왔네요!!
@@ -120,7 +160,14 @@ function Main() {
                       src="images/jaehyuk/firstHeart.png"
                       alt="하트"
                     />
-                  </li>
+                  </li> */}
+                  {commentArray.map((commentArray, index) => (
+                    <CommentInfo
+                      key={index}
+                      userName={userName}
+                      userComment={commentArray}
+                    />
+                  ))}
                 </ul>
                 <div className="timeLog">
                   <span className="timeLogSpan">50분 전</span>
@@ -128,17 +175,25 @@ function Main() {
               </div>
             </div>
             <div className="hl" />
-            <div className="comment">
+            <form className="comment">
               <input
                 id="inputComment"
                 className="inputComment"
                 type="text"
                 placeholder="댓글 달기..."
+                onChange={commentValue}
+                value={comment}
+                // onKeyPress={onKeyPress}
               />
-              <button type="submit" className="submitComment" disabled>
+              <button
+                type="submit"
+                className="submitComment"
+                // disabled="false"
+                onClick={writeComments}
+              >
                 게시
               </button>
-            </div>
+            </form>
           </article>
         </div>
         <div className="mainRight">
