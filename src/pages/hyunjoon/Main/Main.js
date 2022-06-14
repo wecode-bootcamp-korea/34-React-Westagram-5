@@ -1,12 +1,11 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import './Main.scss';
 
-const CommentList = props => {
+function CommentList({ userName, userComment, index, onRemove }) {
   const [likeImg, setLikeImg] = useState('images/hyunjoon/commentlike.png');
   const [count, setCount] = useState(true);
 
   function redLikeBtn() {
-    console.log(count);
     if (count) {
       setLikeImg('images/hyunjoon/commentlikethis.png');
       setCount(false);
@@ -17,19 +16,44 @@ const CommentList = props => {
     }
   }
 
-  function deleteBtn() {}
-
   return (
     <>
       <p>
-        <strong>{props.userName + ' '}</strong>
-        {props.userComment}
-        <img onClick={redLikeBtn} className="commentLike" src={likeImg} />
-        <button className="deleteBtn">X</button>
+        <strong>{userName + ' '}</strong>
+        {userComment}
+        <img
+          onClick={redLikeBtn}
+          className="commentLike"
+          src={likeImg}
+          arc="commentLike"
+        />
+        <button className="deleteBtn" onClick={() => onRemove(index)}>
+          X
+        </button>
       </p>
     </>
   );
-};
+}
+
+// const Menu = ({ menu }) => {
+//   const [isVisible, setIsVisible] = useState(false);
+//   const onSetIsVisible = active => {
+//     setIsVisible(active);
+//   };
+//   return <div classname="menu" onClick={() => onSetIsVisible(true)} />;
+// };
+
+// const DetailMenuModal = ({ setIsVisible }) => {
+//   const onSubmitBtn = () => {
+//     setIsVisible(false);
+//   };
+//   return (
+//     <div className="detailMenuModal">
+//       <div>내용</div>
+//     </div>
+//   );
+// };
+
 // ("<img alt='CommentLIke' src='img/commentlike.png' class='commentLike'>");
 function Main() {
   const [username] = useState('JHJ');
@@ -47,16 +71,23 @@ function Main() {
     }
     setCommentBox([...commentBox, comment]);
     setComment('');
-    console.log(comment);
   };
+
+  const onRemove = index => {
+    setCommentBox(CommentList => {
+      return CommentList.filter((comment, idx, arr) => {
+        return idx !== index;
+      });
+    });
+  };
+
   return (
     <div className="main">
       <nav>
         <div className="navLeft">
           <img
             alt="LogoIcon"
-            className="icon"
-            id="navLogoImg;"
+            className="icon navLogoImg"
             src="images/hyunjoon/instagram-logo.png"
           />
           <p className="text">westagram</p>
@@ -65,7 +96,7 @@ function Main() {
           <input className="searchInput" type="text" placeholder="검색" />
           <img
             alt="SerchImg"
-            id="searchImg"
+            className="searchImg"
             src="images/hyunjoon/search-interface-symbol.png"
           />
         </div>
@@ -73,21 +104,14 @@ function Main() {
           <img
             alt="CompassImg"
             className="icon"
-            id="navCompassImg"
             src="images/hyunjoon/explore.png"
           />
           <img
             alt="HeartImg"
             className="icon"
-            id="navHeartImg"
             src="images/hyunjoon/heart.png"
           />
-          <img
-            alt="ManImg"
-            className="icon"
-            id="navManImg"
-            src="images/hyunjoon/user.png"
-          />
+          <img alt="ManImg" className="icon" src="images/hyunjoon/user.png" />
         </div>
       </nav>
       <section>
@@ -97,12 +121,16 @@ function Main() {
               <div className="userName">username</div>
               <img
                 alt="UserImg"
-                id="itsMeImg"
+                className="itsMeImg"
                 src="images/hyunjoon/JungHyunJun.jpeg"
               />
-              <img alt="MoreImg" id="more" src="images/hyunjoon/more.png" />
+              <img
+                alt="MoreImg"
+                className="more"
+                src="images/hyunjoon/more.png"
+              />
             </div>
-            <img alt="Cake" id="cake" src="images/hyunjoon/cake.jpg" />
+            <img alt="Cake" className="cake" src="images/hyunjoon/cake.jpg" />
 
             <div className="commentContent">
               <div className="likeContent">
@@ -137,26 +165,22 @@ function Main() {
                   alt="FriendImg"
                   src="images/hyunjoon/recommand2.jpg"
                 />
-                <strong>friend1</strong>님 <strong>외 10명</strong>이
-                좋아합니다.
+                <strong>friend1</strong>님<strong>외 10명</strong>이 좋아합니다.
               </p>
               <div className="commentBox">
                 <p>
-                  <strong>username</strong> JMT
+                  <strong>username</strong>JMT
                 </p>
               </div>
               <div className="commentBox">
-                <p>
-                  <strong>username</strong>
-                </p>
-              </div>
-              <div className="commentBox">
-                {commentBox.map((commentArr, i) => {
+                {commentBox.map((commentArr, idx) => {
                   return (
                     <CommentList
                       userName={username}
                       userComment={commentArr}
-                      key={i}
+                      key={idx}
+                      index={idx}
+                      onRemove={onRemove}
                     />
                   );
                 })}

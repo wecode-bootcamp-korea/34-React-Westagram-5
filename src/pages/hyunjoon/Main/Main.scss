@@ -30,10 +30,6 @@
       width: 240px;
       height: 60px;
 
-      #navLogoImg {
-        position: absolute;
-      }
-
       .text {
         font-family: 'Lobster', cursive;
         font-size: 40px;
@@ -50,7 +46,7 @@
       margin-top: 0;
       opacity: 0.1;
 
-      #searchImg {
+      .searchImg {
         position: absolute;
         top: 8px;
         left: 50px;
@@ -93,7 +89,7 @@
         height: auto;
         width: 600px;
 
-        #cake {
+        .cake {
           width: 600px;
           height: 600px;
         }
@@ -109,7 +105,7 @@
             font-size: 20px;
           }
 
-          #itsMeImg {
+          .itsMeImg {
             position: absolute;
             top: 5;
             left: 0;
@@ -118,7 +114,7 @@
             border-radius: 50%;
           }
 
-          #more {
+          .more {
             position: absolute;
             top: 10px;
             right: 10px;
@@ -133,7 +129,7 @@
           background-color: white;
 
           p {
-            margin: 0;
+            margin: 5px 0;
             padding-left: 10px;
             font-size: 15px;
           }
@@ -142,18 +138,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 10px;
+            padding: 5px 10px;
 
             .likeLeft {
               display: inline;
               width: 90px;
               margin: 0;
+              img {
+                padding: 3px;
+              }
             }
 
             .likeRight {
               display: inline;
               width: 30px;
               margin: 0;
+              padding: 3px;
             }
 
             .likeContentIcon {
@@ -173,26 +173,24 @@
             border-radius: 50%;
           }
 
-          #commentBox p {
-            padding-right: 20px;
-          }
-
           .commentInputBox {
             position: relative;
             width: 600px;
             margin-bottom: 50px;
 
             .commentInput {
-              width: 600px;
+              width: 595px;
               border: none;
               outline: none;
+              margin-left: 5px;
             }
           }
           .postingButton {
             position: absolute;
-            right: 10px;
+            right: 0;
             border: none;
             background-color: white;
+            color: skyblue;
           }
         }
       }
@@ -296,6 +294,7 @@
     width: 15px;
     height: 15px;
     margin-bottom: 2px;
+    margin-right: 3px;
   }
   .deleteBtn {
     width: 15px;
