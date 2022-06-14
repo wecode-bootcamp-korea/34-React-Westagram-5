@@ -304,11 +304,14 @@ button {
   }
 }
 .deleteButton {
-  margin-left: 2px;
+  margin-left: 5px;
   font-size: 7px;
   text-align: center;
   background-color: white;
   border: 1px dotted lightgray;
+}
+.firstHeart {
+  backgroundimage: '';
 }
 .myProfile {
   height: 56px;

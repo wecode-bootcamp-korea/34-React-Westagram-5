@@ -1,23 +1,11 @@
 import './Main.scss';
 import '../../../styles/common.scss';
-// import Comments from './Comment';
+import CommentInfo from '../Components/CommentInfo';
 import React, { useState } from 'react';
 // import { eventWrapper } from '@testing-library/user-event/dist/utils';
 // import { createPortal } from 'react-dom';
-const CommentInfo = props => {
-  return (
-    <li className="commentsLi">
-      <span>
-        <span className="pointSpan userID">{props.userName}</span>
-        <span>{props.userComment}</span>
-      </span>
-      <button>x</button>
-    </li>
-  );
-};
 
 function Main() {
-  const [userName] = useState('_hyyyyyk');
   const [comment, setComment] = useState('');
   const [commentArray, setCommentArray] = useState([]);
   // const [key, setKey] = useState(0);
@@ -26,11 +14,6 @@ function Main() {
     // console.log(comment);
     // console.log(event);
   };
-  // const onKeyPress = e => {
-  //   if (e.key === 'enter') {
-  //     writeComments();
-  //   }
-  // };
 
   const writeComments = event => {
     event.preventDefault();
@@ -38,11 +21,8 @@ function Main() {
       return;
     }
     setCommentArray([...commentArray, comment]);
-    // console.log(setCommentArray
     setComment('');
-    // console.log(comment);
   };
-
   return (
     <>
       <nav className="navigation">
@@ -150,22 +130,13 @@ function Main() {
               </div>
               <div className="commentSection">
                 <ul className="comments">
-                  {/* <li className="commentsLi">
-                    <span>
-                      <span className="pointSpan userID">vogue_official</span>
-                      화보 잘 나왔네요!!
-                    </span>
-                    <img
-                      className="commentHeart"
-                      src="images/jaehyuk/firstHeart.png"
-                      alt="하트"
-                    />
-                  </li> */}
-                  {commentArray.map((commentArray, index) => (
+                  {commentArray.map((value, index) => (
                     <CommentInfo
-                      key={index}
-                      userName={userName}
-                      userComment={commentArray}
+                      key={value.id}
+                      index={index}
+                      value={value}
+                      commentArray={commentArray}
+                      setCommentArray={setCommentArray}
                     />
                   ))}
                 </ul>

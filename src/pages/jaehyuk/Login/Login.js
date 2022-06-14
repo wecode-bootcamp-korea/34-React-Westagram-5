@@ -34,7 +34,7 @@ function Login() {
       : setButtonColor('#badef9');
   };
   // id.includes('@') && pw.length > 5
-  //   ? setButtonColor('blue')
+  //   ? setButtonColor('blue')`
   //   : setButtonColor('red');
 
   return (
