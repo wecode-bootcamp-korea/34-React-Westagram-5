@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 function Login() {
   let [id, setId] = useState('');
   let [pw, setPw] = useState('');
-  const [color, setColor] = useState('rgba(0, 149, 246, 0.3)');
+  // const [color, setColor] = useState('rgba(0, 149, 246, 0.3)');
   const [button, setButton] = useState(true);
 
   const navigate = useNavigate();
@@ -23,16 +23,16 @@ function Login() {
     id.includes('@') && pw.length >= 5 ? setButton(false) : setButton(true);
   }
 
-  function changeColor() {
-    id.includes('@') && pw.length >= 5
-      ? setColor('#0095F6')
-      : setColor('rgba(0, 149, 246, 0.3)');
-  }
+  // function changeColor() {
+  //   id.includes('@') && pw.length >= 5
+  //     ? setColor('#0095F6')
+  //     : setColor('rgba(0, 149, 246, 0.3)');
+  // }
 
   function changeInput(e) {}
 
   const change = () => {
-    changeColor();
+    // changeColor();
     changeButton();
   };
 
@@ -62,7 +62,7 @@ function Login() {
           />
           <button
             className="loginButton"
-            style={{ backgroundColor: color }}
+            // style={{ backgroundColor: color }}
             disabled={button}
             onClick={e => {
               if (realId == id) {
