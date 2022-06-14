@@ -1,14 +1,23 @@
-import React from 'react';
+import { React } from 'react';
+import CommentDelete from './CommentDelete';
+import CommentHeart from './CommentHeart';
 
-const Comment = props => {
+const Comment = ({ commentBox, goRemove }) => {
   return (
     <div className="commentSection">
-      {props.commentBox.map((el, idx) => (
-        <div key={idx}>
-          <span className="id">hasang0.0</span>
-          {el}
-        </div>
-      ))}
+      {commentBox.map((el, idx) => {
+        return (
+          <div key={idx}>
+            <span className="id">{el.id}</span>
+            {el.comment}
+
+            <div className="commentImage">
+              <CommentHeart />
+              {/* <CommentDelete idx={idx} goRemove={goRemove} /> */}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -25,6 +25,12 @@
       margin-top: 60px;
     }
 
+    .loginInputBox {
+      border: none;
+      display: flex;
+      flex-direction: column;
+    }
+
     .idBox {
       background-color: #fafafa;
       box-sizing: border-box;

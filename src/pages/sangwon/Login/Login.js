@@ -6,10 +6,9 @@ export default function Login() {
   const navigate = useNavigate();
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
-  const [btn, setBtn] = useState(true);
+  const [btnState, setBtnState] = useState(true);
 
   const goToMain = () => {
-    console.log('ID : ', inputId, ' / PW : ', inputPw);
     navigate('/main-sangwon');
   };
 
@@ -21,46 +20,43 @@ export default function Login() {
     setInputPw(e.target.value);
   };
 
-  const active = () => {
+  const handleActive = () => {
     inputId.indexOf('@') > -1 && inputPw.length >= 5
-      ? setBtn(false)
-      : setBtn(true);
-  };
-
-  const loginEnter = e => {
-    if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-      if (handleIdInput == true && handlePwInput > 4) {
-        goToMain();
-      }
-    }
+      ? setBtnState(false)
+      : setBtnState(true);
   };
 
   return (
     <div className="login">
       <div className="loginWrapper">
         <span className="loginTitle">westagram</span>
-        <input
-          type="text"
-          className="idBox"
-          placeholder="전화번호, 사용자 이름 또는 이메일"
-          // onChange={(e) => setInputId(e.target.value)}
-          onKeyUp={active}
-          onKeyDown={loginEnter}
-          onChange={handleIdInput}
-        />
-        <input
-          type="password"
-          className="pwBox"
-          placeholder="비밀번호"
-          // onChange={(e) => setInputPw(e.target.value)}
-          onKeyUp={active}
-          onKeyDown={loginEnter}
-          onChange={handlePwInput}
-        />
-        <button id="logins" className="login" disabled={btn} onClick={goToMain}>
+        <form
+          className="loginInputBox"
+          onSubmit={goToMain}
+          onKeyUp={handleActive}
+        >
+          <input
+            type="text"
+            className="idBox"
+            placeholder="전화번호, 사용자 이름 또는 이메일"
+            onChange={handleIdInput}
+          />
+          <input
+            type="password"
+            className="pwBox"
+            placeholder="비밀번호"
+            onChange={handlePwInput}
+          />
+          <input
+            type="submit"
+            id="logins"
+            className="login"
+            disabled={btnState}
+            onClick={goToMain}
+            value="로그인"
+          />
           {/* disabled */}
-          로그인
-        </button>
+        </form>
         <a href="#" className="forget">
           비밀번호를 잊으셨나요?
         </a>

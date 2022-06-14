@@ -56,12 +56,12 @@
   }
 
   /* main */
-  .feeds {
+  .body {
     display: flex;
     justify-content: center;
     padding-top: 10px;
 
-    article {
+    .feed {
       width: 500px;
       margin-right: 10px;
       border: 1px solid #cdcdcd;
@@ -143,7 +143,7 @@
     }
 
     /* main-right */
-    .boxLine {
+    .member {
       box-sizing: border-box;
       padding: 5px;
       display: flex;
@@ -160,10 +160,28 @@
       }
     }
   }
+  .memberBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
 
   .link {
     text-decoration: none;
-    font-size: 12px;
+    font-weight: bold;
+    color: #5696f6;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+  span.id {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  span.name {
+    color: #b0b0b0;
+    font-size: 11px;
   }
   .feedImage {
     width: 500px;
@@ -172,38 +190,24 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin-right: 5px;
-    padding: 5px;
+    margin: 5px;
   }
 
   .profile {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-right: 5px;
-    padding: 5px;
+    margin: 5px;
   }
   .text {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 0.6px;
   }
 
-  .text:nth-child(1) {
-    font-weight: bold;
-    font-size: 14px;
-  }
-  .text:nth-child(2) {
-    color: #b0b0b0;
-    font-size: 12px;
-  }
   .type1 {
     color: gray;
-  }
-  .type2 {
-    font-weight: bold;
-    color: #5696f6;
   }
   .type3 {
     text-decoration: none;
@@ -217,16 +221,8 @@
     font-size: 14px;
     letter-spacing: 0.6px;
   }
-  .myText:nth-child(2) {
-    color: #b0b0b0;
-    font-size: 14px;
-  }
-  div .seeAll span.text {
-    font-size: 12px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  .box {
+
+  .boxes {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -236,14 +232,7 @@
     background-color: white;
     border: 1px solid #cdcdcd;
   }
-  .followBox {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    padding-right: 10px;
-    align-items: center;
-  }
+
   .addLine {
     box-sizing: border-box;
     padding: 3px 10px 3px 5px;
@@ -257,5 +246,35 @@
     padding: 15px;
     margin-top: 10px;
     letter-spacing: 1px;
+  }
+  .commentHeart {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  .commentDelete {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  .commentImage {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+    float: right;
+  }
+  .commentImages {
+    margin: 3px;
+    width: 13px;
+    height: 13px;
+  }
+  .commentImages2 {
+    margin: 3px;
+    color: red;
+    width: 13px;
+    height: 13px;
   }
 }

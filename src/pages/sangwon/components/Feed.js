@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Comment from './Comment';
+import Member from './Member';
 import {
   faHeart,
   faComment,
@@ -8,21 +9,16 @@ import {
   faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 
-const Article = props => {
+const Feed = ({ commentBox, commentValue, onChange, onSubmit, goRemove }) => {
   return (
-    <article>
+    <article className="feed">
       <div className="feedBox">
-        <div className="boxLine">
-          <img
-            className="profile"
-            src="images/sangwon/pic1.jpg"
-            alt="profile"
-          />
-          <div className="textLine">
-            <span className="text">id</span>
-            <span className="text">small</span>
-          </div>
-        </div>
+        <Member
+          id="id0"
+          class="profile"
+          name="사람0"
+          image="images/sangwon/pic1.jpg"
+        />
       </div>
       <img src="images/sangwon/food.jpg" className="feedImage" alt="feed" />
       <div className="buttonLine">
@@ -34,7 +30,6 @@ const Article = props => {
         <FontAwesomeIcon className="buttons" icon={faBookmark} size="xl" />
       </div>
       <div className="heartLine">
-        <span></span>
         <img
           className="likeProfile"
           src="images/sangwon/pic1.jpg"
@@ -49,23 +44,22 @@ const Article = props => {
         <span>
           냉면 돈까스 삼겹살 참치김밥 버거킹 회전초밥 불닭볶음면 막창 대창
           양꼬치 김치볶음밥 잡채밥 탕수육 짜장...{' '}
-          <a href="#" className="type3">
+          <a href="/main-sangwon" className="type3">
             더 보기
           </a>
         </span>
-        <Comment commentBox={props.commentBox} />
+        <Comment commentBox={commentBox} goRemove={goRemove} />
         <span className="time">42분 전</span>
       </div>
 
-      {/* !!!!!!!!!!!!!!!!!!댓글창 */}
-      <form className="commentLine" onSubmit={props.onSubmit}>
+      <form className="commentLine" onSubmit={onSubmit}>
         <input
           type="text"
           name="repl"
           placeholder="댓글 달기..."
           className="comment"
-          value={props.commentValue}
-          onChange={props.onChange}
+          value={commentValue}
+          onChange={onChange}
         />
         <input type="submit" value="게시" className="submit" />
       </form>
@@ -73,4 +67,4 @@ const Article = props => {
   );
 };
 
-export default Article;
+export default Feed;
