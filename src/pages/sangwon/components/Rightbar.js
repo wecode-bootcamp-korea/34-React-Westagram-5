@@ -4,7 +4,7 @@ import Member from './Member';
 
 const Rightbar = () => {
   return (
-    <div className="main-right">
+    <div className="mainRight">
       <div className="feedBox">
         <Member
           id="hasang0.0"

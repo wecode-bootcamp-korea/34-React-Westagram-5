@@ -58,12 +58,14 @@
   /* main */
   .body {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding-top: 10px;
 
     .feed {
       width: 500px;
-      margin-right: 10px;
+      margin: 10px;
       border: 1px solid #cdcdcd;
       background-color: white;
 
@@ -87,9 +89,6 @@
         .buttons {
           width: 25px;
           padding: 3px;
-
-          .leftButton {
-          }
         }
       }
 
@@ -100,6 +99,7 @@
 
       .contentLine {
         box-sizing: border-box;
+        width: 100%;
         font-size: 13px;
         float: left;
         padding: 9px;
@@ -143,6 +143,11 @@
     }
 
     /* main-right */
+    .mainRight {
+      position: fixed;
+      right: 80px;
+      top: 60px;
+    }
     .member {
       box-sizing: border-box;
       padding: 5px;
@@ -276,5 +281,11 @@
     color: red;
     width: 13px;
     height: 13px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  div.mainRight {
+    display: none;
   }
 }

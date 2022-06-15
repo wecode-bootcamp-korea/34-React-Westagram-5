@@ -8,8 +8,21 @@ export default function Login() {
   const [inputPw, setInputPw] = useState('');
   const [btnState, setBtnState] = useState(true);
 
-  const goToMain = () => {
-    navigate('/main-sangwon');
+  const goToMain = e => {
+    e.preventDefault();
+    fetch('http://10.58.0.27:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: inputId,
+        password: inputPw,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        localStorage.setItem('Key', data.access_token);
+      });
+    // navigate('/main-sangwon');
   };
 
   const handleIdInput = e => {
@@ -25,6 +38,16 @@ export default function Login() {
       ? setBtnState(false)
       : setBtnState(true);
   };
+
+  // fetch('http://10.58.0.27:8000/signin', {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     email: inputId,
+  //     password: inputPw,
+  //   }),
+  // })
+  //   .then(response => response.json())
+  //   .then(data => console.log('nice'));
 
   return (
     <div className="login">

@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './Main.scss';
 import Navbar from '../components/Navbar';
 import Feed from '../components/Feed';
@@ -14,12 +14,24 @@ import Rightbar from '../components/Rightbar';
 export default function Main() {
   const [num, setNum] = useState(0);
   const [commentValue, setCommentValue] = useState('');
-  const [commentBox, setCommentBox] = useState([
-    { id: 'niceman', comment: 'nice' },
-    { id: 'goodgirl', comment: 'good' },
-    { id: 'greatboss', comment: 'great' },
-    { id: 'verywoman', comment: 'verynice' },
-  ]);
+  const [commentBox, setCommentBox] = useState([]);
+  const [feeddata, setFeedData] = useState([]);
+
+  useEffect(() => {
+    fetch('./data/commentData.json', { method: 'GET' })
+      .then(res => res.json())
+      .then(data => {
+        setCommentBox(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('./data/feedData.json', { method: 'GET' })
+      .then(res => res.json())
+      .then(data => {
+        setFeedData(data);
+      });
+  }, []);
 
   const onChange = e => {
     setCommentValue(e.target.value);
@@ -32,7 +44,6 @@ export default function Main() {
       { id: 'hasang0.0', comment: commentValue },
     ]);
     setCommentValue('');
-    setNum(num + 1);
   };
 
   const goRemove = id => {
@@ -50,6 +61,7 @@ export default function Main() {
           onSubmit={onSubmit}
           onChange={onChange}
           goRemove={goRemove}
+          feeddata={feeddata}
         />
         <Rightbar />
       </div>
