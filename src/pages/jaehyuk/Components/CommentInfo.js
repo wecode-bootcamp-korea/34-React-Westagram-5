@@ -40,14 +40,14 @@ const CommentInfo = ({ setCommentArray, commentArray, value, index }) => {
         />
         <button
           className="deleteButton"
-          onClick={() => {
-            let copy = [...commentArray];
-            copy.splice(index, 1);
-            // const deleteArray = commentArray.filter(value => {
-            //   return value.id !== ;
-            // });
-            // console.log(commentArray.value.id);
-            setCommentArray(copy);
+          onClick={index => {
+            // let copy = [...commentArray];
+            // copy.splice(index, 1);
+            const deleteArray = commentArray.filter(value => {
+              return value.id !== index;
+            });
+            console.log(commentArray.value.id);
+            setCommentArray(deleteArray);
           }}
         >
           x

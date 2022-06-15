@@ -1,7 +1,8 @@
 import './Main.scss';
 import '../../../styles/common.scss';
-import CommentInfo from '../Components/CommentInfo';
-import React, { useState } from 'react';
+// import CommentInfo from '../Components/CommentInfo';
+import React, { useState, useEffect } from 'react';
+// import userEvent from '@testing-library/user-event';
 // import { eventWrapper } from '@testing-library/user-event/dist/utils';
 // import { createPortal } from 'react-dom';
 
@@ -14,15 +15,21 @@ function Main() {
     // console.log(comment);
     // console.log(event);
   };
+  useEffect(() => {
+    //Data fetching -> side effect
+    fetch('data/commentData.json')
+      .then(res => res.json())
+      .then(res => setCommentArray(res));
+  }, []);
 
-  const writeComments = event => {
-    event.preventDefault();
-    if (comment === '') {
-      return;
-    }
-    setCommentArray([...commentArray, comment]);
-    setComment('');
-  };
+  // const writeComments = event => {
+  //   event.preventDefault();
+  //   if (comment === '') {
+  //     return;
+  //   }
+  //   setCommentArray([...commentArray, comment]);
+  //   setComment('');
+  // };
   return (
     <>
       <nav className="navigation">
@@ -130,7 +137,7 @@ function Main() {
               </div>
               <div className="commentSection">
                 <ul className="comments">
-                  {commentArray.map((value, index) => (
+                  {/* {commentArray.map((value, index) => (
                     <CommentInfo
                       key={value.id}
                       index={index}
@@ -138,6 +145,13 @@ function Main() {
                       commentArray={commentArray}
                       setCommentArray={setCommentArray}
                     />
+                  ))} */}
+                  {commentArray.map(comment => (
+                    <li key={comment.id}>
+                      <span>{comment.id}</span>
+                      <span>{comment.userName}</span>
+                      <span>{comment.content}</span>
+                    </li>
                   ))}
                 </ul>
                 <div className="timeLog">
@@ -160,7 +174,7 @@ function Main() {
                 type="submit"
                 className="submitComment"
                 // disabled="false"
-                onClick={writeComments}
+                // onClick={writeComments}
               >
                 게시
               </button>

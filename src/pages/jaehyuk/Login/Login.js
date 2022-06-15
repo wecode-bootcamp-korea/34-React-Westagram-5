@@ -6,16 +6,7 @@ import './Login.scss';
 
 function Login() {
   const navigate = useNavigate();
-  const response = 'SUCCESS';
-  const goToMain = () => {
-    if (response === 'SUCCESS') {
-      alert('환영합니다!');
-      navigate('/main-jaehyuk');
-    } else {
-      alert('틀렸습니다.');
-    }
-  };
-
+  // const response = 'SUCCESS';
   const [id, setId] = useState('');
   const handleIdInput = event => {
     // console.log('id.value: ', id);
@@ -26,15 +17,48 @@ function Login() {
     // console.log('pw.value: ', pw);
     setPw(event.target.value);
   };
+  const signUp = () => {
+    fetch('http://10.58.7.17:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log('결과: ', result));
+  };
+  // const goToMain = () => {
+  //   if (response === 'SUCCESS') {
+  //     alert('환영합니다!');
+  //     navigate('/main-jaehyuk');
+  //   } else {
+  //     alert('틀렸습니다.');
+  //   }
+  // };
+  const signIn = () => {
+    fetch('http://10.58.7.17:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.message === 'SUCCESS')
+          window.localStorage.setItem('token', response.access_token);
+      });
+  };
 
   const [buttonColor, setButtonColor] = useState('#badef9');
   const changeButtonColor = event => {
-    return id.includes('@') && pw.length >= 5
+    return id.length >= 6 && pw.length >= 6
       ? setButtonColor('blue')
       : setButtonColor('#badef9');
   };
   // id.includes('@') && pw.length > 5
-  //   ? setButtonColor('blue')`
+  //   ? setButtonColor('blue')
   //   : setButtonColor('red');
 
   return (
@@ -45,7 +69,7 @@ function Login() {
             <h1 id="logo">Westagram</h1>
           </Link>
         </div>
-        <form action="" method="post" className="loginMethod">
+        <form className="loginMethod">
           <div className="inputWrap">
             <input
               type="text"
@@ -62,14 +86,24 @@ function Login() {
               onKeyUp={changeButtonColor}
             />
           </div>
-          <button
-            className="btn"
-            type="submit"
-            onClick={goToMain}
-            style={{ backgroundColor: buttonColor }}
-          >
-            로그인
-          </button>
+          <span>
+            <button
+              className="loginBtn"
+              type="button"
+              onClick={signIn}
+              style={{ backgroundColor: buttonColor }}
+            >
+              로그인
+            </button>
+            <button
+              className="signupBtn"
+              type="button"
+              onClick={signUp}
+              style={{ backgroundColor: buttonColor }}
+            >
+              회원가입
+            </button>
+          </span>
         </form>
         <div className="passwordWrong">
           <p>
