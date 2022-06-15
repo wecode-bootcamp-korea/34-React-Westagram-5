@@ -7,6 +7,7 @@ const CommentBox = ({
   setComment,
   postedComment,
   setPostedComment,
+  i,
 }) => {
   const [commentLike, setCommentLike] = useState(false);
 
@@ -32,7 +33,7 @@ const CommentBox = ({
           onClick={e => {
             e.preventDefault();
             let copy = [...postedComment];
-            copy.splice(0, 1);
+            copy.splice(i, 1);
             setPostedComment(copy);
           }}
         >

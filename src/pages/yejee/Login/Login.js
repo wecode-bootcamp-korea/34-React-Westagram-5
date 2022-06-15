@@ -19,22 +19,39 @@ function Login() {
     navigate('/main-yejee');
   };
 
+  const signUp = () => {
+    fetch('http://10.58.7.17:8000/users/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(result => console.log('결과: ', result));
+  };
+  const signIn = () => {
+    fetch('http://10.58.7.17:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (response.message === 'SUCCESS') {
+          window.localStorage.setItem('token', response.access_token);
+          goToMain();
+        } else {
+          alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+        }
+      });
+  };
+
   function changeButton() {
     id.includes('@') && pw.length >= 5 ? setButton(false) : setButton(true);
   }
-
-  // function changeColor() {
-  //   id.includes('@') && pw.length >= 5
-  //     ? setColor('#0095F6')
-  //     : setColor('rgba(0, 149, 246, 0.3)');
-  // }
-
-  function changeInput(e) {}
-
-  const change = () => {
-    // changeColor();
-    changeButton();
-  };
 
   return (
     <div className="loginBox">
@@ -48,7 +65,7 @@ function Login() {
             onChange={e => {
               setId(e.target.value);
             }}
-            onKeyUp={change}
+            onKeyUp={changeButton}
           />
           <input
             type="password"
@@ -58,27 +75,23 @@ function Login() {
             onChange={e => {
               setPw(e.target.value);
             }}
-            onKeyUp={change}
+            onKeyUp={changeButton}
           />
           <button
+            type="button"
             className="loginButton"
             // style={{ backgroundColor: color }}
             disabled={button}
-            onClick={e => {
-              if (realId == id) {
-                if (realPw == pw) {
-                  e.stopPropagation();
-                  goToMain();
-                }
-              } else {
-                alert('아이디 혹은 비밀번호가 일치하지 않습니다.');
-              }
-            }}
+            onClick={signIn}
           >
             로그인
           </button>
         </form>
         <p className="forgottenPassword">비밀번호를 잊으셨나요?</p>
+      </div>
+      <div className="joinBox">
+        <span>계정이 없으신가요?</span>
+        <button onClick={signUp}>가입하기</button>
       </div>
     </div>
   );
