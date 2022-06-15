@@ -1,30 +1,44 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import './Login.scss';
 
 function Login() {
+  const rightId = 'nodie2676@empal.com ';
+  const rightPw = '@@2918Gus';
+  useEffect(() => {
+    fetch('http://10.58.6.230:8000/users/signin', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: rightId,
+        password: rightPw,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => localStorage.setItem('access_token', data.access_token));
+  }, []);
+
   const navigate = useNavigate();
   const goToMain = () => {
     navigate('/main-hyunjoon');
   };
-  const rightId = 'wjd2676@gmail.com';
-  const rightPw = '111111';
+
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [color, setColor] = useState('skyblue');
 
   const btnColorChange = () => {
-    (id.length > 1) & (pw.length > 1) ? setColor('blue') : setColor('skyblue');
+    id.length > 1 && pw.length > 1 ? setColor('blue') : setColor('skyblue');
   };
 
   const rightIdPw = () => {
-    if (id == rightId && pw == rightPw) {
+    if (id === rightId && pw === rightPw) {
       goToMain();
     }
   };
   const wrongIdPw = () => {
-    if (id.indexOf('@') == -1) {
+    if (id.indexOf('@') === -1) {
       alert('아이디는 이메일형식으로 입력해주세요');
       return;
     }

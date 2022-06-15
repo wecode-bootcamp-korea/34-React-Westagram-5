@@ -1,62 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import CommentBox from './Component/CommentBox';
 import './Main.scss';
 
-function CommentList({ userName, userComment, index, onRemove }) {
-  const [likeImg, setLikeImg] = useState('images/hyunjoon/commentlike.png');
-  const [count, setCount] = useState(true);
-
-  function redLikeBtn() {
-    if (count) {
-      setLikeImg('images/hyunjoon/commentlikethis.png');
-      setCount(false);
-    }
-    if (!count) {
-      setLikeImg('images/hyunjoon/commentlike.png');
-      setCount(true);
-    }
-  }
-
-  return (
-    <>
-      <p>
-        <strong>{userName + ' '}</strong>
-        {userComment}
-        <img
-          onClick={redLikeBtn}
-          className="commentLike"
-          src={likeImg}
-          arc="commentLike"
-        />
-        <button className="deleteBtn" onClick={() => onRemove(index)}>
-          X
-        </button>
-      </p>
-    </>
-  );
-}
-
-// const Menu = ({ menu }) => {
-//   const [isVisible, setIsVisible] = useState(false);
-//   const onSetIsVisible = active => {
-//     setIsVisible(active);
-//   };
-//   return <div classname="menu" onClick={() => onSetIsVisible(true)} />;
-// };
-
-// const DetailMenuModal = ({ setIsVisible }) => {
-//   const onSubmitBtn = () => {
-//     setIsVisible(false);
-//   };
-//   return (
-//     <div className="detailMenuModal">
-//       <div>내용</div>
-//     </div>
-//   );
-// };
-
-// ("<img alt='CommentLIke' src='img/commentlike.png' class='commentLike'>");
 function Main() {
-  const [username] = useState('JHJ');
+  const [commentData, setCommentData] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/commentData.json')
+      .then(res => res.json())
+      .then(data => {
+        // setCommentData(data);
+      });
+  }, []);
   const [comment, setComment] = useState('');
 
   const commentPush = e => {
@@ -167,24 +122,14 @@ function Main() {
                 />
                 <strong>friend1</strong>님<strong>외 10명</strong>이 좋아합니다.
               </p>
-              <div className="commentBox">
-                <p>
-                  <strong>username</strong>JMT
-                </p>
-              </div>
-              <div className="commentBox">
-                {commentBox.map((commentArr, idx) => {
-                  return (
-                    <CommentList
-                      userName={username}
-                      userComment={commentArr}
-                      key={idx}
-                      index={idx}
-                      onRemove={onRemove}
-                    />
-                  );
-                })}
-              </div>
+              <CommentBox
+                commentData={commentData}
+                commentBox={commentBox}
+                onRemove={onRemove}
+                commentPush={commentPush}
+                comment={comment}
+                onSubmit={onSubmit}
+              />
               <div className="commentInputBox">
                 <input
                   onChange={commentPush}
