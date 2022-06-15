@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 // import 'CommentInfo.scss';
-
 const CommentInfo = ({ setCommentArray, commentArray, value, index }) => {
   const [like, setLike] = useState(false);
   const [heartSrc, setHeartSrc] = useState('images/jaehyuk/firstHeart.png');
@@ -15,7 +14,7 @@ const CommentInfo = ({ setCommentArray, commentArray, value, index }) => {
       setLike(false);
     }
   };
-  // const onRemove = index => {
+  // const onRemove = index => {`
 
   // };
   // const onRemove = index => {

@@ -146,11 +146,15 @@ function Main() {
                       setCommentArray={setCommentArray}
                     />
                   ))} */}
-                  {commentArray.map(comment => (
-                    <li key={comment.id}>
-                      <span>{comment.id}</span>
-                      <span>{comment.userName}</span>
-                      <span>{comment.content}</span>
+                  {commentArray.map(value => (
+                    <li key={value.id}>
+                      <span>
+                        <span>{value.userName} </span>
+                        <span>{value.content}</span>
+                      </span>
+                      <span>
+                        <img />
+                      </span>
                     </li>
                   ))}
                 </ul>

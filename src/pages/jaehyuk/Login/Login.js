@@ -46,8 +46,10 @@ function Login() {
     })
       .then(response => response.json())
       .then(response => {
-        if (response.message === 'SUCCESS')
+        if (response.message === 'SUCCESS') {
           window.localStorage.setItem('token', response.access_token);
+          navigate('/main-jaehyuk');
+        } else alert('입력정보가 일치하지 않습니다');
       });
   };
 
