@@ -1,0 +1,71 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 700px;
+  overflow: hidden;
+
+  .content {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .westaBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 600px;
+    border: solid gray 1px;
+    opacity: 0.3;
+
+    .loginBox {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ID {
+      width: 350px;
+      height: 50px;
+      border: solid gray 1px;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+
+    .PW {
+      width: 350px;
+      height: 50px;
+      margin-top: 15px;
+      border: solid gray 1px;
+      border-radius: 5px;
+      font-size: 18px;
+    }
+  }
+
+  #text {
+    position: absolute;
+    top: 80px;
+    font-size: 80px;
+    font-family: 'Lobster', cursive;
+  }
+
+  button {
+    position: absolute;
+    bottom: 200px;
+    width: 350px;
+    height: 50px;
+    color: white;
+    border: 0;
+  }
+
+  #forget {
+    position: absolute;
+    bottom: 20%;
+    font-size: 18px;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
