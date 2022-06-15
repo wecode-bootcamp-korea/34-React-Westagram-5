@@ -21,7 +21,7 @@ const Feed = ({
     <>
       {feeddata.map((el, idx) => {
         return (
-          <article className="feed">
+          <article className="feed" key={el.id}>
             <div className="feedBox">
               <Member
                 id={el.name}

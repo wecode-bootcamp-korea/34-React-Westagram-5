@@ -22,7 +22,7 @@ export default function Login() {
         console.log(data);
         localStorage.setItem('Key', data.access_token);
       });
-    // navigate('/main-sangwon');
+    navigate('/main-sangwon');
   };
 
   const handleIdInput = e => {
