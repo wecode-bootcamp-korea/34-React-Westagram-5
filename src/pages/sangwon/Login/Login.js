@@ -1,80 +1,74 @@
-import { React, useState } from 'react';
-import './Login.scss';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.scss';
 
-export default function Login() {
+const ERROR_MESSAGE = {
+  'KEY ERROR': 'key 확인',
+  'INVALID EMAIL': '이메일이나 비밀번호를 확인 해 주세요',
+  'INVALID PASSWORD': '이메일이나 비밀번호를 확인 해 주세요',
+};
+
+const Login = () => {
   const navigate = useNavigate();
-  const [inputId, setInputId] = useState('');
-  const [inputPw, setInputPw] = useState('');
-  const [btnState, setBtnState] = useState(true);
+  const [userInfo, setUserInfo] = useState({ userId: '', userPw: '' });
 
+  const { userId, userPw } = userInfo;
   const goToMain = e => {
     e.preventDefault();
     fetch('http://10.58.0.27:8000/users/signin', {
       method: 'POST',
       body: JSON.stringify({
-        email: inputId,
-        password: inputPw,
+        email: userId,
+        password: userPw,
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('통신 실패');
+      })
       .then(data => {
-        console.log(data);
-        localStorage.setItem('Key', data.access_token);
-      });
+        if (data.message === 'SUCCESS') {
+          localStorage.setItem('Key', data.access_token);
+        } else {
+          alert(ERROR_MESSAGE[data.message]);
+        }
+      })
+      .catch(err => console.log(err));
     navigate('/main-sangwon');
   };
 
-  const handleIdInput = e => {
-    setInputId(e.target.value);
+  const getUserInfo = e => {
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
   };
-
-  const handlePwInput = e => {
-    setInputPw(e.target.value);
-  };
-
-  const handleActive = () => {
-    inputId.indexOf('@') > -1 && inputPw.length >= 5
-      ? setBtnState(false)
-      : setBtnState(true);
-  };
-
-  // fetch('http://10.58.0.27:8000/signin', {
-  //   method: 'POST',
-  //   body: JSON.stringify({
-  //     email: inputId,
-  //     password: inputPw,
-  //   }),
-  // })
-  //   .then(response => response.json())
-  //   .then(data => console.log('nice'));
+  const isValid = userId.includes('@') && userPw.length >= 5;
 
   return (
     <div className="login">
       <div className="loginWrapper">
         <span className="loginTitle">westagram</span>
-        <form
-          className="loginInputBox"
-          onSubmit={goToMain}
-          onKeyUp={handleActive}
-        >
+        <form className="loginInputBox" onSubmit={goToMain}>
           <input
             type="text"
             className="idBox"
+            name="userId"
             placeholder="전화번호, 사용자 이름 또는 이메일"
-            onChange={handleIdInput}
+            onChange={getUserInfo}
           />
           <input
             type="password"
             className="pwBox"
+            name="userPw"
             placeholder="비밀번호"
-            onChange={handlePwInput}
+            onChange={getUserInfo}
           />
           <input
             type="submit"
             id="logins"
             className="login"
-            disabled={btnState}
+            disabled={isValid ? false : true}
             onClick={goToMain}
             value="로그인"
           />
@@ -84,7 +78,9 @@ export default function Login() {
           비밀번호를 잊으셨나요?
         </a>
       </div>
-      <script src="login.js"></script>
+      <script src="login.js" />
     </div>
   );
-}
+};
+
+export default Login;

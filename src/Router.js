@@ -5,7 +5,7 @@ import MainHyunJoon from './pages/hyunjoon/Main/Main';
 import LoginYeJee from './pages/yejee/Login/Login';
 import MainYeJee from './pages/yejee/Main/Main';
 //상원 컴포넌트
-import LoginSangWon from './pages/sangwon/Login/Login';
+import LoginSangWon from './pages/sangwon/Login/Login.js';
 import MainSangWon from './pages/sangwon/Main/Main';
 //재혁 컴포넌트
 import LoginJaeHyuk from './pages/jaehyuk/Login/Login';
