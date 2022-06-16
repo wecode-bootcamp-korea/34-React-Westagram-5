@@ -152,9 +152,7 @@ function Main() {
                         <span>{value.userName} </span>
                         <span>{value.content}</span>
                       </span>
-                      <span>
-                        <img />
-                      </span>
+                      <span />
                     </li>
                   ))}
                 </ul>
