@@ -6,8 +6,6 @@ const InputCommentLine = ({ commentBox, setCommentBox, idx }) => {
     setCommentValue(e.target.value);
   };
 
-  const sum = (a, b) => a + b;
-
   const onSubmit = e => {
     e.preventDefault();
     if (commentValue == '') return;
@@ -19,8 +17,6 @@ const InputCommentLine = ({ commentBox, setCommentBox, idx }) => {
       });
     });
     setCommentValue('');
-    console.log('현재 indexBox:', commentBox[idx]);
-    console.log('전체 Box', commentBox);
   };
 
   return (
