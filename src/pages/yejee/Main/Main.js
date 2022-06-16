@@ -13,7 +13,20 @@ function Main() {
   const [likes, setLikes] = useState(108);
 
   const countlikes = () => {
-    like !== true ? setLikes(109) : setLikes(108);
+    like ? setLikes(like => likes - 1) : setLikes(like => likes + 1);
+  };
+
+  const toggleLikeIcon = () => {
+    setLike(!like);
+    countlikes();
+  };
+
+  const subitComment = e => {
+    e.preventDefault();
+    let copy = [...postedComment];
+    copy.push(comment);
+    setPostedComment(copy);
+    e.target.reset();
   };
 
   return (
@@ -47,12 +60,7 @@ function Main() {
             </div>
             <img src="images/yejee/dumi.jpg" className="feed-img" />
             <div className="buttons">
-              <button
-                onClick={() => {
-                  setLike(!like);
-                  countlikes();
-                }}
-              >
+              <button onClick={toggleLikeIcon}>
                 {like === true ? (
                   <img src="images/yejee/redheart.png" className="button" />
                 ) : (
@@ -88,15 +96,7 @@ function Main() {
               );
             })}
 
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                let copy = [...postedComment];
-                copy.push(comment);
-                setPostedComment(copy);
-                e.target.reset();
-              }}
-            >
+            <form onSubmit={subitComment}>
               <input
                 type="text"
                 placeholder="댓글 달기"
