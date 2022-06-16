@@ -4,6 +4,8 @@ import './Main.scss';
 
 function Main() {
   const [commentData, setCommentData] = useState([]);
+  const [comment, setComment] = useState('');
+  const [commentBox, setCommentBox] = useState([]);
 
   useEffect(() => {
     fetch('/data/commentData.json')
@@ -12,12 +14,10 @@ function Main() {
         // setCommentData(data);
       });
   }, []);
-  const [comment, setComment] = useState('');
 
   const commentPush = e => {
     setComment(e.target.value);
   };
-  const [commentBox, setCommentBox] = useState([]);
 
   const onSubmit = event => {
     event.preventDefault();
