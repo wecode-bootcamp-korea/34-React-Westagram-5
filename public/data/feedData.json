@@ -14,5 +14,13 @@
     "feedImg": "images/sangwon/pic1.jpg",
     "content": "조용히 해 민병관!",
     "likeCount": "511"
+  },
+  {
+    "id": 3,
+    "name": "gogogogo",
+    "koreanName": "3번째인간",
+    "feedImg": "images/sangwon/instagram.png",
+    "content": "asdasdasdasdasdasdasdas",
+    "likeCount": "51122"
   }
 ]

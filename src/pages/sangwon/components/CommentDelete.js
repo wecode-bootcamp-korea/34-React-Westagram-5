@@ -1,15 +1,12 @@
-import React from 'react';
+import { React } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
-const CommentDelete = ({ goRemove }) => {
+const CommentDelete = () => {
   return (
     <div>
       <button className="commentImage">
-        <img
-          src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png"
-          className="commentImages"
-          alt="delete"
-          onClick={goRemove}
-        />
+        <FontAwesomeIcon icon={faX} />
       </button>
     </div>
   );
