@@ -1,0 +1,295 @@
+.main {
+  height: 95vh;
+  background-color: #fafafa;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+
+  /* nav */
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    border-bottom: 1px solid #cdcdcd;
+    height: 50px;
+    width: 100vw;
+
+    .navElement {
+      display: flex;
+      align-items: center;
+    }
+    #instaId {
+      border-left: 1px solid black;
+      padding-left: 12px;
+    }
+    .imagess {
+      width: 20px;
+      height: auto;
+      margin-right: 8px;
+    }
+    .mainTitle {
+      font-family: 'Lobster', cursive;
+      font-size: 22px;
+      margin-left: 10px;
+    }
+    .search {
+      width: 15px;
+      height: 15px;
+      margin-bottom: 2px;
+      display: block;
+      position: relative;
+      left: 110px;
+      color: #cdcdcd;
+    }
+    .inputbox {
+      width: 250px;
+      height: 25px;
+      text-align: center;
+      background-color: #eeeeee;
+      border: 1px solid #cdcdcd;
+      border-radius: 4px;
+    }
+    .inputbox::placeholder {
+      color: #cdcdcd;
+    }
+  }
+
+  /* main */
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+
+    .feed {
+      width: 550px;
+      margin: 10px;
+      margin-right: 300px;
+      border: 1px solid #cdcdcd;
+      background-color: white;
+
+      .feedBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .textLine {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .buttonLine {
+        box-sizing: border-box;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+
+        .buttons {
+          width: 25px;
+          padding: 3px;
+        }
+      }
+
+      .heartLine {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .contentLine {
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 13px;
+        float: left;
+        padding: 9px;
+        font-weight: medium;
+
+        .id {
+          font-size: 14px;
+          font-weight: bold;
+          margin-right: 5px;
+        }
+
+        .time {
+          display: block;
+          color: gray;
+        }
+      }
+      .commentSection {
+        margin: 5px 1px 5px 1px;
+      }
+
+      .comment {
+        height: 100%;
+        box-sizing: border-box;
+        width: 90%;
+        padding: 10px;
+        padding-left: 15px;
+        border: none;
+      }
+      .comment:focus {
+        outline: none;
+      }
+      .submit {
+        background-color: transparent;
+        margin: 0;
+        box-sizing: border-box;
+        width: 10%;
+        height: 100%;
+        border: none;
+        color: #bfe0fd;
+      }
+    }
+
+    /* main-right */
+    .mainRight {
+      position: fixed;
+      right: 15%;
+      top: 60px;
+    }
+    .member {
+      box-sizing: border-box;
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .myProfile {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .memberBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  .link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5696f6;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+  span.id {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  span.name {
+    color: #b0b0b0;
+    font-size: 11px;
+  }
+  .feedImage {
+    width: 550px;
+  }
+  .likeProfile {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+
+  .profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+  }
+
+  .type1 {
+    color: gray;
+  }
+  .type3 {
+    text-decoration: none;
+    font-size: 14px;
+    color: #cbcbcb;
+  }
+
+  .myText {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+  }
+
+  .boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    padding-left: 8px;
+    padding-top: 8px;
+    background-color: white;
+    border: 1px solid #cdcdcd;
+  }
+
+  .addLine {
+    box-sizing: border-box;
+    padding: 3px 10px 3px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .addBox {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 15px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+  .commentHeart {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  .commentDelete {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  .commentImage {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+    float: right;
+  }
+  .heartUnclicked {
+    margin: 3px;
+    width: 13px;
+    height: 13px;
+  }
+  .heartClicked {
+    margin: 3px;
+    color: red;
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media only screen and (max-width: 1231px) {
+  div.mainRight {
+    display: none;
+  }
+  article.feed {
+    margin-right: 0px !important;
+  }
+}

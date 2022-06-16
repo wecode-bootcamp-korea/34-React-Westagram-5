@@ -1,0 +1,78 @@
+// scss 를 import 한 다음
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #fafafa;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .loginWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    border: 1px solid #dbdbdb;
+
+    .loginTitle {
+      font-family: 'Lobster', cursive;
+      font-size: 52px;
+      margin-top: 60px;
+    }
+
+    .loginInputBox {
+      border: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .idBox {
+      background-color: #fafafa;
+      box-sizing: border-box;
+      margin-top: 110px;
+      width: 300px;
+      height: 40px;
+      padding: 5px;
+      padding-left: 10px;
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+    }
+
+    .pwBox {
+      background-color: #fafafa;
+      box-sizing: border-box;
+      margin-top: 10px;
+      width: 300px;
+      height: 40px;
+      padding: 5px;
+      padding-left: 10px;
+      border: 1px solid #eaeaea;
+      border-radius: 5px;
+    }
+
+    .login {
+      background-color: #31a0f7;
+      color: white;
+      margin-top: 20px;
+      width: 300px;
+      height: 40px;
+      border: none;
+      border-radius: 5px;
+    }
+    .login:disabled {
+      background-color: #c0dffd;
+    }
+
+    .forget {
+      margin-top: 150px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #2d5581;
+    }
+  }
+}

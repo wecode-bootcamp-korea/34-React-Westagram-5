@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "niceman",
+    "koreanName": "나이스",
+    "feedImg": "images/sangwon/food.jpg",
+    "content": "냉면 돈까스 삼겹살 참치김밥 버거킹 회전초밥 불닭볶음면 막창 대창 양꼬치 김치볶음밥 잡채밥 탕수육 짜장",
+    "likeCount": "3,234"
+  },
+  {
+    "id": 2,
+    "name": "koreanamericanfrenchman",
+    "koreanName": "민병관",
+    "feedImg": "images/sangwon/pic1.jpg",
+    "content": "조용히 해 민병관!",
+    "likeCount": "511"
+  },
+  {
+    "id": 3,
+    "name": "gogogogo",
+    "koreanName": "3번째인간",
+    "feedImg": "images/sangwon/instagram.png",
+    "content": "asdasdasdasdasdasdasdas",
+    "likeCount": "51122"
+  }
+]
