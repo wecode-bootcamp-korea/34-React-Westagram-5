@@ -11,7 +11,7 @@ function Main() {
     fetch('/data/commentData.json')
       .then(res => res.json())
       .then(data => {
-        // setCommentData(data);
+        setCommentData(data);
       });
   }, []);
 
@@ -21,9 +21,8 @@ function Main() {
 
   const onSubmit = event => {
     event.preventDefault();
-    if (comment === '') {
-      return;
-    }
+    //줄바꿈 없이 바로 return 도 가능합니다.
+    if (comment === '') return;
     setCommentBox([...commentBox, comment]);
     setComment('');
   };
@@ -90,6 +89,7 @@ function Main() {
             <div className="commentContent">
               <div className="likeContent">
                 <div className="likeLeft">
+                  {/* 반복되는 UI는 map 으로 구현할 수 있겠습니다. */}
                   <img
                     className="likeContentIcon"
                     alt="LikeImg"
@@ -217,6 +217,7 @@ function Main() {
                   <span>num시간,분 전</span>
                 </div>
               </div>
+              {/* className이나, 변수, 함수 이름지을 때 순서(first,second,third, one,two,three), 방향(left,right)는 지양 해 주세요! */}
               <span className="textRightSide">팔로우</span>
             </div>
             <div className="needFollow">
