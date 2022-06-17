@@ -1,25 +1,37 @@
-import './Main.scss';
-import '../../../styles/common.scss';
-// import CommentInfo from '../Components/CommentInfo';
 import React, { useState, useEffect } from 'react';
-// import userEvent from '@testing-library/user-event';
-// import { eventWrapper } from '@testing-library/user-event/dist/utils';
-// import { createPortal } from 'react-dom';
+import './Main.scss';
+import CommentInfo from '../Components/CommentInfo';
 
 function Main() {
   const [comment, setComment] = useState('');
+  const [dummyData, setDummyData] = useState([]);
   const [commentArray, setCommentArray] = useState([]);
+  const [increaseId, setIncreaseId] = useState(4);
   // const [key, setKey] = useState(0);
+  console.log(dummyData);
+
+  //댓글에 입력한 값을 받는 함수라서 getCommentValue 가 어울릴 것 같네요
   const commentValue = event => {
     setComment(event.target.value);
     // console.log(comment);
     // console.log(event);
   };
+  //comment가 아무것도 입력되지 않으면 동작하지않게 early return 해주고
+  //comment를 useEffect에서 받아온 배열에 추가해주고, input 창에 남아있는 value를 초기화 해주는 함수 입니다.
+  //dummyData 라는 state에 comment 가 추가 될 때 마다 배열에 element가 하니씩 늘어나면서 댓글이 생성됩니다.
+  const makeComment = e => {
+    e.preventDefault();
+    if (comment.length === 0) return;
+    setDummyData([...dummyData, { id: increaseId, content: comment }]);
+    setIncreaseId(increaseId => increaseId + 1);
+    setComment('');
+  };
+
   useEffect(() => {
     //Data fetching -> side effect
     fetch('data/commentData.json')
       .then(res => res.json())
-      .then(res => setCommentArray(res));
+      .then(res => setDummyData(res));
   }, []);
 
   // const writeComments = event => {
@@ -90,6 +102,7 @@ function Main() {
             </div>
             <div className="iconsReact">
               <div className="iconsLeft">
+                {/* 이미지태그가 같은 구조로 3번 반복되고 있습니다. 반복되는 ui는 map으로 구현 해 보세요 */}
                 <img
                   id="mainHeart"
                   className="iconReact"
@@ -137,22 +150,30 @@ function Main() {
               </div>
               <div className="commentSection">
                 <ul className="comments">
-                  {/* {commentArray.map((value, index) => (
+                  {dummyData.map((value, index) => (
                     <CommentInfo
                       key={value.id}
-                      index={index}
-                      value={value}
-                      commentArray={commentArray}
-                      setCommentArray={setCommentArray}
+                      commentIndex={value.id}
+                      value={value.content}
+                      dummyData={dummyData}
+                      setDummyData={setDummyData}
                     />
-                  ))} */}
-                  {commentArray.map(comment => (
+                  ))}
+                  {/* {commentArray.map(comment => (
                     <li key={comment.id}>
                       <span>{comment.id}</span>
                       <span>{comment.userName}</span>
                       <span>{comment.content}</span>
                     </li>
-                  ))}
+                  ))} */}
+
+                  {/* {dummyData.map((comment, index) => (
+                    <li key={index}>
+                      <span>{comment.id}</span>
+                      <span>{comment.userName}</span>
+                      <span>{comment.content}</span>
+                    </li>
+                  ))} */}
                 </ul>
                 <div className="timeLog">
                   <span className="timeLogSpan">50분 전</span>
@@ -160,7 +181,7 @@ function Main() {
               </div>
             </div>
             <div className="hl" />
-            <form className="comment">
+            <form className="comment" onSubmit={makeComment}>
               <input
                 id="inputComment"
                 className="inputComment"
@@ -199,6 +220,9 @@ function Main() {
               <span className="findMore">모두 보기</span>
             </div>
             <ul className="storyList">
+              {/* 아래에 반복되는 li 태그 덩어리 들이 있는데, map 으로 구현 해 볼 좋은 기회 입니다. 획기적으로 코드양을 줄이고, 유지보수와 가독성을 높일 수 있습니다.
+              상수데이터, 그리고 UI를 그리는 데이터 구조를 어떻게 만들어야 할 까 많이 배울 수 있는 코드로 보입니다. */}
+              {/* 여기서부터 */}
               <li className="storyListLi">
                 <div className="gradientWrap">
                   <img
@@ -251,6 +275,7 @@ function Main() {
                   <span className="subSpan">56분 전</span>
                 </div>
               </li>
+              {/* 여기까지 */}
             </ul>
           </div>
           <div className="sectionRecommend articleBordering">
