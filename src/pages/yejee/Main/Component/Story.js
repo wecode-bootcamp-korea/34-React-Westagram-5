@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Story = props => {
+const Story = ({ children, userName, bottomText }) => {
   return (
     <div>
       <span className="stories">
-        {props.img}
+        {children}
         <div>
-          <p className="id">{props.id}</p>
-          <p className="bottomText">{props.bottomText}</p>
+          <p className="id">{userName}</p>
+          <p className="bottomText">{bottomText}</p>
         </div>
       </span>
     </div>

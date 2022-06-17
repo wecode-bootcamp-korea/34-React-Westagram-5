@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import CommentList from './CommentList';
-import Nickname from './CommentList';
 
 const CommentBox = ({
   comment,
   setComment,
   postedComment,
   setPostedComment,
-  i,
+  commentIndex,
 }) => {
-  const [commentLike, setCommentLike] = useState(false);
+  const [isCommentLike, setIsCommentLike] = useState(false);
+
+  const toggleCommentLike = () => {
+    setIsCommentLike(!isCommentLike);
+  };
+
+  const removeComment = e => {
+    e.preventDefault();
+    setPostedComment(
+      postedComment.filter((ele, index) => commentIndex !== index)
+    );
+  };
 
   return (
     <span className="postedComment">
@@ -18,27 +27,17 @@ const CommentBox = ({
         {comment}
       </span>
       <span>
-        <button
-          onClick={() => {
-            setCommentLike(!commentLike);
-          }}
-        >
-          {commentLike === true ? (
-            <img src="images/yejee/redheart.png" className="commentLike" />
-          ) : (
-            <img src="images/yejee/heart.png" className="commentLike" />
-          )}
+        <button onClick={toggleCommentLike}>
+          <img
+            src={
+              isCommentLike
+                ? 'images/yejee/redheart.png'
+                : 'images/yejee/heart.png'
+            }
+            className="commentLike"
+          />
         </button>
-        <button
-          onClick={e => {
-            e.preventDefault();
-            let copy = [...postedComment];
-            copy.splice(i, 1);
-            setPostedComment(copy);
-          }}
-        >
-          x
-        </button>
+        <button onClick={removeComment}>x</button>
       </span>
     </span>
   );

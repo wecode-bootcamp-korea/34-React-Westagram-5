@@ -1,19 +1,22 @@
-/* eslint-disable */
-
-import React from 'react';
-import './Main.scss';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import CommentBox from './Component/CommentBox';
-import Mainright from './Component/MainRight';
+import MainRight from './Component/MainRight';
+import './Main.scss';
+
+const INFO_IMG = [
+  { id: 1, src: 'images/yejee/explore.png', className: 'icons' },
+  { id: 2, src: 'images/yejee/heart.png', className: 'icons' },
+  { id: 3, src: 'images/yejee/profile.png', className: 'icons' },
+];
 
 function Main() {
   const [comment, setComment] = useState('');
   const [postedComment, setPostedComment] = useState([]);
   const [like, setLike] = useState(false);
-  const [likes, setLikes] = useState(108);
+  const [likeCount, setLikeCount] = useState(108);
 
   const countlikes = () => {
-    like ? setLikes(like => likes - 1) : setLikes(like => likes + 1);
+    like ? setLikeCount(prev => prev - 1) : setLikeCount(prev => prev + 1);
   };
 
   const toggleLikeIcon = () => {
@@ -21,12 +24,15 @@ function Main() {
     countlikes();
   };
 
-  const subitComment = e => {
+  const getComment = e => {
+    setComment(e.target.value);
+  };
+
+  const submitComment = e => {
     e.preventDefault();
-    let copy = [...postedComment];
-    copy.push(comment);
-    setPostedComment(copy);
-    e.target.reset();
+    if (comment.length === 0) return;
+    setPostedComment([...postedComment, comment]);
+    setComment('');
   };
 
   return (
@@ -38,9 +44,16 @@ function Main() {
           <input type="text" placeholder="검색" id="searchBar" />
         </div>
         <div className="images">
-          <img src="images/yejee/explore.png" className="icons" />
-          <img src="images/yejee/heart.png" className="icons" />
-          <img src="images/yejee/profile.png" className="icons" />
+          {INFO_IMG.map(imgData => {
+            return (
+              <img
+                key={imgData.id}
+                src={imgData.src}
+                className={imgData.className}
+                alt="이미지에 alt 속성은 꼭 넣어 주세요~"
+              />
+            );
+          })}
         </div>
       </nav>
 
@@ -61,11 +74,15 @@ function Main() {
             <img src="images/yejee/dumi.jpg" className="feed-img" />
             <div className="buttons">
               <button onClick={toggleLikeIcon}>
-                {like === true ? (
-                  <img src="images/yejee/redheart.png" className="button" />
-                ) : (
-                  <img src="images/yejee/heart.png" className="button" />
-                )}
+                <img
+                  src={
+                    like
+                      ? 'images/yejee/redheart.png'
+                      : 'images/yejee/heart.png'
+                  }
+                  className="button"
+                  alt="노란색 밑줄이 있는 코드에 마우스커서 올려보면 어떤 수정이 필요한지 알려줍니다~ warning message를 차근차근 읽어보세요~"
+                />
               </button>
               <button type="button">
                 <img src="images/yejee/comment.png" className="button" />
@@ -76,7 +93,7 @@ function Main() {
             </div>
             <div className="howManyLikes">
               <span className="who">kiki</span>님 외{' '}
-              <span className="number">{likes}</span>
+              <span className="number">{likeCount}</span>
               명이 좋아합니다
             </div>
             <div className="captionBox">
@@ -88,6 +105,7 @@ function Main() {
               return (
                 <CommentBox
                   key={i}
+                  commentIndex={i}
                   comment={comment}
                   setComment={setComment}
                   postedComment={postedComment}
@@ -96,23 +114,23 @@ function Main() {
               );
             })}
 
-            <form onSubmit={subitComment}>
+            <form onSubmit={submitComment}>
               <input
                 type="text"
                 placeholder="댓글 달기"
                 className="comment"
-                onChange={e => {
-                  setComment(e.target.value);
-                }}
+                value={comment}
+                onChange={getComment}
               />
               <button className="postButton">게시</button>
             </form>
           </article>
         </div>
-        <Mainright />
+        <MainRight />
       </main>
     </div>
   );
+  //TODO : 리팩토링 할 떄 수정 하기~
   // const addComment = () => {
   //   setPostedComment = [...postedComment, comment];
   // };
