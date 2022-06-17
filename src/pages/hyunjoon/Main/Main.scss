@@ -1,0 +1,308 @@
+.main {
+  margin: 0;
+  background-color: #fafafa;
+  box-sizing: border-box;
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    height: 100px;
+    border-bottom: 2px solid rgb(235, 242, 244);
+    background-color: white;
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      margin: 10 15px;
+    }
+
+    .navRight {
+      display: flex;
+    }
+
+    .navLeft {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      width: 240px;
+      height: 60px;
+
+      .text {
+        font-family: 'Lobster', cursive;
+        font-size: 40px;
+        position: absolute;
+        bottom: -33;
+        right: 0;
+      }
+    }
+
+    .search {
+      display: flex;
+      position: relative;
+      text-align: center;
+      margin-top: 0;
+      opacity: 0.1;
+
+      .searchImg {
+        position: absolute;
+        top: 8px;
+        left: 50px;
+        width: 15px;
+        height: 15px;
+      }
+
+      .searchInput {
+        text-align: center;
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    top: 100px;
+    min-height: 100%;
+    margin-bottom: 5%;
+
+    span {
+      opacity: 0.3;
+    }
+
+    .content {
+      width: 600px;
+      height: auto;
+      min-height: 600px;
+      margin-top: 3%;
+      border: solid 2px rgb(235, 242, 244);
+      background-color: white;
+
+      .contentBox {
+        position: relative;
+        min-height: 650px;
+        height: auto;
+        width: 600px;
+
+        .cake {
+          width: 600px;
+          height: 600px;
+        }
+
+        .userContent {
+          display: flex;
+          align-items: center;
+          height: 50px;
+
+          .userName {
+            position: absolute;
+            left: 50px;
+            font-size: 20px;
+          }
+
+          .itsMeImg {
+            position: absolute;
+            top: 5;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+
+          .more {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+          }
+        }
+        .commentContent {
+          position: absolute;
+          top: 650px;
+          width: 600px;
+          background-color: white;
+
+          p {
+            margin: 5px 0;
+            padding-left: 10px;
+            font-size: 15px;
+          }
+
+          .likeContent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+
+            .likeLeft {
+              display: inline;
+              width: 90px;
+              margin: 0;
+              img {
+                padding: 3px;
+              }
+            }
+
+            .likeRight {
+              display: inline;
+              width: 30px;
+              margin: 0;
+              padding: 3px;
+            }
+
+            .likeContentIcon {
+              width: 30px;
+              height: 30px;
+            }
+          }
+
+          .howManyLike {
+            display: flex;
+            align-items: center;
+          }
+
+          .userImg {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+          }
+
+          .commentInputBox {
+            position: relative;
+            width: 600px;
+            margin-bottom: 50px;
+
+            .commentInput {
+              width: 595px;
+              border: none;
+              outline: none;
+              margin-left: 5px;
+            }
+          }
+          .postingButton {
+            position: absolute;
+            right: 0;
+            border: none;
+            background-color: white;
+            color: skyblue;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    width: 300px;
+    height: 600px;
+    margin-top: 3%;
+    margin-left: 20px;
+
+    .sideBarNav {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      margin-top: 10px;
+
+      .textRightSide {
+        color: black;
+        opacity: 1;
+      }
+    }
+  }
+
+  .nameBundleBox {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+
+    .smallImg {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    .nameBundle p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .wecodeImg {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+
+  .storyBox {
+    width: 300px;
+    height: 300px;
+    margin: 10px;
+    border: solid 2px rgb(235, 242, 244);
+    background-color: white;
+  }
+
+  .followText {
+    text-align: right;
+    color: blue;
+  }
+
+  .recommendBox {
+    width: 300px;
+    height: 300px;
+    margin-top: 10px;
+    margin: 10px;
+    border: solid 2px rgb(235, 242, 244);
+    background-color: white;
+
+    .needFollow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 15px;
+    }
+  }
+
+  .source {
+    width: 300px;
+    margin: 10px;
+
+    p {
+      margin: 0 20;
+      font-size: 15px;
+      opacity: 0.2;
+    }
+
+    div {
+      padding-top: 20px;
+      margin-left: 30px;
+      font-size: 15px;
+      opacity: 0.2;
+    }
+  }
+
+  .commentLike {
+    vertical-align: middle;
+    float: right;
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    margin-right: 3px;
+  }
+  .deleteBtn {
+    width: 15px;
+    height: 15px;
+    float: right;
+    padding: 0;
+    border: none;
+    background-color: white;
+    opacity: 0.3;
+  }
+}
